@@ -7,19 +7,36 @@ namespace Stage_2_Lesson_01_Homework
     {
         static void Main(string[] args)
         {
-            IFurnitureFactory furnitureFactory = new VictorianFurnitureFactory();
-            IChair chair = furnitureFactory.CreateChair();
-            ICoffeTable coffeTable = furnitureFactory.CreateCoffeTable();
-            ISofa sofa = furnitureFactory.CreateSofa();
 
-            chair.hasLegs();
-            chair.sitOn();
+            // Task 1 Abstract Factory design pattern (Creational)
 
-            coffeTable.hasLegs();
-            coffeTable.putOn();
+            //IFurnitureFactory furnitureFactory = new VictorianFurnitureFactory();
+            //IChair chair = furnitureFactory.CreateChair();
+            //ICoffeTable coffeTable = furnitureFactory.CreateCoffeTable();
+            //ISofa sofa = furnitureFactory.CreateSofa();
 
-            sofa.sitOn();
-            sofa.lieDown();
+            //chair.hasLegs();
+            //chair.sitOn();
+
+            //coffeTable.hasLegs();
+            //coffeTable.putOn();
+
+            //sofa.sitOn();
+            //sofa.lieDown();
+
+
+            // Task 2 Proxy design pattern (Structural)
+
+            Actor actor = new Actor("John Doe");
+
+            IPerfomer scene = new Stuntman(actor, false);
+            scene.Perform();
+
+            IPerfomer secondScene = new Stuntman(actor, true);
+            secondScene.Perform();
+
+
+
         }
     }
 }
