@@ -38,18 +38,44 @@ namespace Stage_2_Lesson_01_Homework
 
             // Task 3 Facade design pattern (Structural);
 
-            var reportFacade = new ReportFacade();
-            
-            var htmlReport = reportFacade.GenerateHTMLReport();
-            Console.WriteLine(htmlReport);
+            //var reportFacade = new ReportFacade();
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("<----------------------------------------------------------------------------->");
-            Console.WriteLine("<----------------------------------------------------------------------------->");
-            Console.ResetColor();
+            //var htmlReport = reportFacade.GenerateHTMLReport();
+            //Console.WriteLine(htmlReport);
 
-            var pdfReport = reportFacade.GeneratePDFReport();
-            Console.WriteLine(pdfReport);
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("<----------------------------------------------------------------------------->");
+            //Console.WriteLine("<----------------------------------------------------------------------------->");
+            //Console.ResetColor();
+
+            //var pdfReport = reportFacade.GeneratePDFReport();
+            //Console.WriteLine(pdfReport);
+
+
+            // Task 4 Strategy design pattern (Behavioral);
+
+            var baseDir = AppContext.BaseDirectory;
+            var projectDir = Path.GetFullPath(Path.Combine(baseDir, @"..\..\..\"));
+            var myFile = Path.Combine(projectDir, "data.zip");
+
+            var extension = Path.GetExtension(myFile).ToLower();
+
+            FileProcessor processor = new FileProcessor();
+
+            if (extension == ".json")
+            {
+                processor.SetStrategy(new JsonStrategy());
+            }
+            else if (extension == ".zip")
+            {
+                processor.SetStrategy(new ZipStrategy());
+            }
+            else if (extension == ".txt")
+            {
+                processor.SetStrategy(new TxtStrategy());
+            }
+
+            processor.Execute(myFile);
 
 
         }
