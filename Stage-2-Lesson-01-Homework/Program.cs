@@ -27,14 +27,29 @@ namespace Stage_2_Lesson_01_Homework
 
             // Task 2 Proxy design pattern (Structural)
 
-            Actor actor = new Actor("John Doe");
+            //Actor actor = new Actor("John Doe");
 
-            IPerfomer scene = new Stuntman(actor, false);
-            scene.Perform();
+            //IPerfomer scene = new Stuntman(actor, false);
+            //scene.Perform();
 
-            IPerfomer secondScene = new Stuntman(actor, true);
-            secondScene.Perform();
+            //IPerfomer secondScene = new Stuntman(actor, true);
+            //secondScene.Perform();
 
+
+            // Task 3 Facade design pattern (Structural);
+
+            var reportFacade = new ReportFacade();
+            
+            var htmlReport = reportFacade.GenerateHTMLReport();
+            Console.WriteLine(htmlReport);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("<----------------------------------------------------------------------------->");
+            Console.WriteLine("<----------------------------------------------------------------------------->");
+            Console.ResetColor();
+
+            var pdfReport = reportFacade.GeneratePDFReport();
+            Console.WriteLine(pdfReport);
 
 
         }
